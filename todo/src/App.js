@@ -1,10 +1,15 @@
-import './App.css';
-import TodoTemplateWindow from './TodoTemplate';
+import "./App.css";
+import TodoInfoTime from "./TodoInfoTime";
+import TodoTemplateWindow from "./TodoTemplate";
 
-const App = () =>{
+const App = () => {
   return (
-    <TodoTemplateWindow></TodoTemplateWindow>
-  )
-}
+    <>
+      <TodoTemplateWindow>
+        <TodoInfoTime/>
+      </TodoTemplateWindow>
+    </>
+  );
+};
 
 export default App;
