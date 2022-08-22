@@ -1,8 +1,7 @@
 import "./App.css";
 import TodoInfoTime from "./TodoInfoTime";
 import TodoTemplateWindow from "./TodoTemplate";
-import styled from "styled-components"
-import TodoInput from "./TodoInput";
+import TodoList from "./TodoList";
 
 
 const App = () => {
@@ -10,6 +9,7 @@ const App = () => {
     <>
       <TodoTemplateWindow>
         <TodoInfoTime/>
+        <TodoList/>
       </TodoTemplateWindow>
     </>
   );
