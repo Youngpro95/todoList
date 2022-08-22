@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import TodoItem from "./TodoItem"
 
 const TodolistBlock = styled.div`
 flex : 1;
@@ -8,7 +9,10 @@ background : gray;
 `;
 
 function TodoList() {
-  return <TodolistBlock>TodoList</TodolistBlock>
+  return <TodolistBlock>
+    <TodoItem text="test" done={true}></TodoItem>
+    <TodoItem text="test2" done={false}></TodoItem>
+  </TodolistBlock>
 }
 
 export default TodoList;
