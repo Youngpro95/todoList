@@ -4,7 +4,25 @@ import {
   MdCheckBox,
   MdRemoveCircleOutline,
 } from "react-icons/md";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+
+
+const TodoListItem = ({ todo , onRemove, onToggle}) => {
+  const { text, checked, id } = todo;
+  return (
+    <TodoListBlock>
+      <Checkbox onClick={()=>onToggle(id)}>
+        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        <Text checked={checked}>{text}</Text>
+      </Checkbox>
+      <Remove onClick={()=>onRemove(id)}>
+        <MdRemoveCircleOutline />
+      </Remove>
+    </TodoListBlock>
+  );
+};
+
 
 const TodoListBlock = styled.div`
   padding: 1rem;
@@ -23,20 +41,16 @@ const Checkbox = styled.div`
   svg {
     font-size: 2rem;
   }
-  
 `;
 const Text = styled.div`
   margin-left: 0.5rem;
   flex: 1;
-  
-  &:checked {
-    display: none;
-    svg {
-      color: #22b8cf;
-    }
-    color: #abd5bd;
-    text-decoration: line-through;
-  }
+  ${(props) =>
+    props.checked &&
+    css`
+      color: gray;
+      text-decoration: line-through;
+    `}
 `;
 
 const Remove = styled.div`
@@ -49,21 +63,4 @@ const Remove = styled.div`
     color: #ff8787;
   }
 `;
-
-const TodoListItem = ({ todo }) => {
-  const { text, checked } = todo;
-
-  return (
-    <TodoListBlock>
-      <Checkbox>
-        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-        <Text>{text}</Text>
-      </Checkbox>
-      <Remove>
-        <MdRemoveCircleOutline />
-      </Remove>
-    </TodoListBlock>
-  );
-};
-
 export default TodoListItem;

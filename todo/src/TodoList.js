@@ -2,18 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 
-const TodolistBlock = styled.div`
-  width: 100%;
-`;
 
-function TodoList({ todos }) {
+
+export default function TodoList({ todos, onRemove, onToggle }) {
+
   return (
     <TodolistBlock>
       {todos.map((todo) => (
-        <TodoItem todo={todo} key={todo.id} />
+        <TodoItem todo={todo} key={todo.id} checked={todo.checked} onRemove={onRemove} onToggle={onToggle}/>
       ))}
     </TodolistBlock>
   );
 }
 
-export default TodoList;
+const TodolistBlock = styled.div`
+  width: 100%;
+`;
+
+
+
