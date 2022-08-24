@@ -1,67 +1,69 @@
-import React from "react";
-import { IoIosCheckboxOutline, IoIosTrash } from "react-icons/io";
-import styled, { css } from "styled-components";
+import React, { useState } from "react";
+import {
+  MdCheckBoxOutlineBlank,
+  MdCheckBox,
+  MdRemoveCircleOutline,
+} from "react-icons/md";
+import styled from "styled-components";
 
-const Remove = styled.div`
-  display: none;
-  justify-content: center;
-  font-size: 34px;
-  margin-top: 10px;
-  cursor: pointer;
-  &:hover {
-    color: red;
-  }
-`;
-const TodoItemBlock = styled.div`
+const TodoListBlock = styled.div`
+  padding: 1rem;
   display: flex;
   align-items: center;
-  &:hover {
-    ${Remove} {
-      display: initial;
-    }
+  &:nth-child(even) {
+    background: #f8f9fa;
   }
 `;
 
-const Check = styled.div`
-  font-size: 40px;
+const Checkbox = styled.div`
+  cursor: pointer;
+  flex: 1;
   display: flex;
+  align-items: center;
+  svg {
+    font-size: 2rem;
+  }
+  
+`;
+const Text = styled.div`
+  margin-left: 0.5rem;
+  flex: 1;
+  
+  &:checked {
+    display: none;
+    svg {
+      color: #22b8cf;
+    }
+    color: #abd5bd;
+    text-decoration: line-through;
+  }
+`;
+
+const Remove = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ff6b6b;
   cursor: pointer;
   &:hover {
-    color: green;
+    color: #ff8787;
   }
-
-  ${props =>
-    props.done &&
-    css`
-    color : green;
-  `}
 `;
 
-const Text = styled.div`
-  flex: 1;
-  font-size: 34px;
-  margin-left: 5px;
-  margin-bottom: 3px;
-  ${(props) =>
-    props.done &&
-    css`
-      color: green;
-      text-decoration: line-through;
-    `};
-`;
+const TodoListItem = ({ todo }) => {
+  const { text, checked } = todo;
 
-const TodoItem = ({ id, done, text }) => {
   return (
-    <TodoItemBlock>
-      <Check done={done}>
-        <IoIosCheckboxOutline />
-      </Check>
-      <Text done={done}>{text}</Text>
+    <TodoListBlock>
+      <Checkbox>
+        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+        <Text>{text}</Text>
+      </Checkbox>
       <Remove>
-        <IoIosTrash />
+        <MdRemoveCircleOutline />
       </Remove>
-    </TodoItemBlock>
+    </TodoListBlock>
   );
 };
 
-export default TodoItem;
+export default TodoListItem;

@@ -1,18 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import TodoItem from "./TodoItem"
+import TodoItem from "./TodoItem";
 
 const TodolistBlock = styled.div`
-flex : 1;
-padding :20px 25px;
-background : gray;
+  width: 100%;
 `;
 
-function TodoList() {
-  return <TodolistBlock>
-    <TodoItem text="test" done={true}></TodoItem>
-    <TodoItem text="test2" done={false}></TodoItem>
-  </TodolistBlock>
+function TodoList({ todos }) {
+  return (
+    <TodolistBlock>
+      {todos.map((todo) => (
+        <TodoItem todo={todo} key={todo.id} />
+      ))}
+    </TodolistBlock>
+  );
 }
 
 export default TodoList;
