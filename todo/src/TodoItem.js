@@ -12,7 +12,7 @@ const TodoListItem = ({ todo , onRemove, onToggle}) => {
   const { text, checked, id } = todo;
   return (
     <TodoListBlock>
-      <Checkbox onClick={()=>onToggle(id)}>
+      <Checkbox checked={checked}onClick={()=>onToggle(id)}>
         {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
         <Text checked={checked}>{text}</Text>
       </Checkbox>
@@ -41,6 +41,13 @@ const Checkbox = styled.div`
   svg {
     font-size: 2rem;
   }
+  ${(props) =>
+    props.checked &&
+    css`
+      svg{
+        color : green;
+      }
+    `}
 `;
 const Text = styled.div`
   margin-left: 0.5rem;

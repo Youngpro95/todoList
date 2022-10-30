@@ -30,12 +30,14 @@ const App = () => {
     },
     [todos]
   );
+  
   const onRemove = useCallback(
     (id) => {
       setTodos(todos.filter((todo) => todo.id !== id));
     },
     [todos]
   );
+
   const onToggle = useCallback((id) => {
     setTodos(
       todos.map((todo) =>

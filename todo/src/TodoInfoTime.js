@@ -2,18 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useInterval } from "use-interval";
 
-const TodoInfoBlock = styled.div`
-  border-bottom: 1px solid #e9ecef;
-  font-size: 30px;
-  text-align: center;
-`;
-
-const TitleTodo = styled.div`
-  text-align: center;
-  font-size: 50px;
-  padding-top : 20px;
-`;
-
 const calTime = () => {
   const date = new Date();
   const arrDayStr = ["일", "월", "화", "수", "목", "금", "토"];
@@ -44,5 +32,18 @@ const TodoInfoTime = () => {
     </>
   );
 };
+
+
+const TodoInfoBlock = styled.div`
+  border-bottom: 1px solid #e9ecef;
+  font-size: 30px;
+  text-align: center;
+`;
+
+const TitleTodo = styled.div`
+  text-align: center;
+  font-size: 50px;
+  padding-top : 20px;
+`;
 
 export default TodoInfoTime;
